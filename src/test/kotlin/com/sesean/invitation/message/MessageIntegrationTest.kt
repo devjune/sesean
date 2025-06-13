@@ -16,9 +16,8 @@ import org.springframework.test.web.servlet.post
 @ActiveProfiles("test")
 class MessageIntegrationTest(
     private val mockMvc: MockMvc,
-    private val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper,
 ) : BehaviorSpec() {
-
     override fun extensions() = listOf(SpringExtension)
 
     init {
@@ -27,10 +26,11 @@ class MessageIntegrationTest(
             `when`("메시지를 생성하면") {
                 val request = CreateMessageRequest("테스트 작성자", "테스트 내용")
 
-                val result = mockMvc.post("/api/messages") {
-                    contentType = MediaType.APPLICATION_JSON
-                    content = objectMapper.writeValueAsString(request)
-                }
+                val result =
+                    mockMvc.post("/api/messages") {
+                        contentType = MediaType.APPLICATION_JSON
+                        content = objectMapper.writeValueAsString(request)
+                    }
 
                 then("메시지 정보와 IP가 저장된다") {
                     result.andExpect {

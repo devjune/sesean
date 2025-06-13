@@ -22,5 +22,5 @@ data class MessageResponse(
 
 data class CreateMessageRequest(
     val author: String,
-    val content: String
+    val content: String,
 )
