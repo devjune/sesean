@@ -17,9 +17,6 @@ data class Message(
     @Column(nullable = false, length = 500)
     val content: String,
 
-    @Column(name = "ip_address", length = 45)
-    val ipAddress: String? = null,
-
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),

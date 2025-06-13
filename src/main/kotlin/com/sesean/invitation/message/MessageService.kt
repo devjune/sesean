@@ -10,17 +10,16 @@ import org.springframework.transaction.annotation.Transactional
 class MessageService(
     private val repository: MessageRepository
 ) {
-    
+
     fun getMessages(pageable: Pageable): Page<Message> {
         return repository.findAllByOrderByCreatedAtDesc(pageable)
     }
-    
+
     @Transactional
-    fun createMessage(author: String, content: String, ipAddress: String): Message {
+    fun createMessage(author: String, content: String): Message {
         val message = Message(
             author = author,
             content = content,
-            ipAddress = ipAddress
         )
         return repository.save(message)
     }

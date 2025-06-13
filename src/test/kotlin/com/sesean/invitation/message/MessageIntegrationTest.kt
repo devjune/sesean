@@ -37,7 +37,6 @@ class MessageIntegrationTest(
                         status { isOk() }
                         jsonPath("$.author") { value("테스트 작성자") }
                         jsonPath("$.content") { value("테스트 내용") }
-                        jsonPath("$.ipAddress") { exists() }
                     }
                 }
             }

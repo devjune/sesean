@@ -6,7 +6,6 @@ data class MessageResponse(
     val id: Long,
     val author: String,
     val content: String,
-    val ipAddress: String? = null,
     val createdAt: LocalDateTime,
 ) {
     companion object {
@@ -15,7 +14,6 @@ data class MessageResponse(
                 id = message.id,
                 author = message.author,
                 content = message.content,
-                ipAddress = message.ipAddress,
                 createdAt = message.createdAt,
             )
         }

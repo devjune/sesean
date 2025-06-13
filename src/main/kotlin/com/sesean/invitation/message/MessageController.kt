@@ -1,7 +1,5 @@
 package com.sesean.invitation.message
 
-import com.sesean.invitation.util.IpAddressUtils
-import jakarta.servlet.http.HttpServletRequest
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.Min
 import org.springframework.data.domain.Page
@@ -26,10 +24,8 @@ class MessageController(
     @PostMapping
     fun createMessage(
         @RequestBody request: CreateMessageRequest,
-        httpRequest: HttpServletRequest
     ): MessageResponse {
-        val ipAddress = IpAddressUtils.getClientIpAddress(httpRequest)
-        val message = service.createMessage(request.author, request.content, ipAddress = ipAddress)
+        val message = service.createMessage(request.author, request.content)
         return MessageResponse.from(message)
     }
 }
